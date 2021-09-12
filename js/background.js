@@ -1,3 +1,29 @@
+/****************************
+ * 自定义响应头
+ * 处理跨域请求
+ */
+
+function dealResponse(response) {
+    console.log(response.responseHeaders)
+    response.responseHeaders.push({ name: 'Access-Control-Allow-Origin', value: "*" });
+    return {
+        responseHeaders: response.responseHeaders
+    }
+}
+
+chrome.webRequest.onHeadersReceived.addListener(
+    dealResponse,
+    { urls: ["https://fanyi.youdao.com/*"] },
+    ["blocking","responseHeaders", "extraHeaders"]
+);
+
+chrome.webRequest.onErrorOccurred.addListener(
+    (e) => {
+        console.log(e)
+    },
+    { urls: ["https://fanyi.youdao.com/*"] }
+);
+/****************************/
 
 chrome.contextMenus.create({
     type: 'normal', // 类型，可选：["normal", "checkbox", "radio", "separator"]，默认 normal

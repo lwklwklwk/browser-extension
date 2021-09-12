@@ -5,6 +5,17 @@
 //     });
 // }
 
+
+function getScript(name) {
+    const script = document.createElement('script');
+    script.setAttribute("type", "module");
+    script.setAttribute("src", chrome.extension.getURL(name));
+    const head = document.head || document.getElementsByTagName("head")[0] || document.documentElement;
+    head.insertBefore(script, head.lastChild);
+}
+
+getScript('thirdpart/axios.js')
+getScript('js/translate.js')
 let nowTarget = null
 
 document.oncontextmenu = function ({target}) {

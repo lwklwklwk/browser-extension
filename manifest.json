@@ -31,6 +31,10 @@
 			"run_at": "document_start"
 		}
 	],
+	"web_accessible_resources": [
+		"js/translate.js",
+		"thirdpart/axios.js"
+	],
     "background":
 	{
 		"scripts": ["js/background.js"]
