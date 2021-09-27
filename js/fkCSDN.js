@@ -1,12 +1,20 @@
 window.onload = () => {
-    enableUserSelect()
+    observer.observe(document.body, {subtree: true, childList: true});
 }
+const callback = function(mutationsList, observer) {
+    if(!isEnableUserSelectFinished) {
+        enableUserSelect()
+    }
+};
+const observer = new MutationObserver(callback);
 
-// setTimeout(enableUserSelect, 5000)
+
+let isEnableUserSelectFinished = false
 function enableUserSelect() {
-    Array(...document.getElementsByClassName('prettyprint')).forEach(element => {
-        element.style.userSelect = 'initial'
-        Array(...element.children).forEach(child => {
+    [...document.getElementsByTagName('pre')].forEach(element => {
+        element.style.userSelect = 'initial';
+        [...element.children].forEach(child => {
+            isEnableUserSelectFinished = true
             child.style.userSelect = 'initial'
         })
     });

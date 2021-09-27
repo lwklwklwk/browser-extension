@@ -25,7 +25,7 @@
 			"run_at": "document_start"
 		},
 		{
-		"matches": ["https://blog.csdn.net/*"],
+		"matches": ["https://blog.csdn.net/*", "https://*.csdn.net/*"],
 			"js": ["js/fkCSDN.js"],
 			"css": ["css/common.css"],
 			"run_at": "document_start"

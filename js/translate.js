@@ -1,6 +1,7 @@
 let translateBox = null;
-initTranslateBox()
+
 document.addEventListener('mouseup', (e) => {
+    initTranslateBox()
     const text = document.getSelection().toString();
     translateBox.style.display = 'none'
 
@@ -36,7 +37,8 @@ function initTranslateBox() {
     translateBox = document.createElement('div')
     translateBox.style = `position: absolute;                
                         background: antiquewhite;
-                        padding: 8px 16px;`
+                        padding: 8px 16px;
+                        z-index: 99999;`
     translateBox.id = "translateBox"
     document.body.appendChild(translateBox)
     return

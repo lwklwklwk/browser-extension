@@ -4,7 +4,6 @@
  */
 
 function dealResponse(response) {
-    console.log(response.responseHeaders)
     response.responseHeaders.push({ name: 'Access-Control-Allow-Origin', value: "*" });
     return {
         responseHeaders: response.responseHeaders
